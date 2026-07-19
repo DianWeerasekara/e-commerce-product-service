@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { databaseConfig } from './database/database.config';
+import { CategoryModule } from './category/category.module';
 
 @Module({
   imports: [
@@ -16,7 +17,7 @@ import { databaseConfig } from './database/database.config';
       useFactory: databaseConfig,
     }),
 
-    //the modules comes here
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [AppService],
