@@ -15,6 +15,8 @@ import { databaseConfig } from './database/database.config';
       inject: [ConfigService],
       useFactory: databaseConfig,
     }),
+
+    //the modules comes here
   ],
   controllers: [AppController],
   providers: [AppService],
