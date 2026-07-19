@@ -1,5 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { UpdateDateColumn } from "typeorm/browser";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import { Product } from "../../products/entities/product.entity";
 
 @Entity()
 export class Category {
@@ -19,5 +19,8 @@ export class Category {
     created_at!: Date;
 
     @UpdateDateColumn()
-    updated_date!: Date
+    updated_date!: Date;
+
+    @OneToMany(() => Product, (product) => product.category)
+    products!: Product[];
 }
