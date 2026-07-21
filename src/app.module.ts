@@ -7,6 +7,7 @@ import { databaseConfig } from './database/database.config';
 import { CategoryModule } from './category/category.module';
 import { ProductsModule } from './products/products.module';
 import { ProductVariantModule } from './product-variant/product-variant.module';
+import { VariantAttributeModule } from './variant-attribute/variant-attribute.module';
 
 @Module({
   imports: [
@@ -24,6 +25,8 @@ import { ProductVariantModule } from './product-variant/product-variant.module';
     ProductsModule,
 
     ProductVariantModule,
+
+    VariantAttributeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
