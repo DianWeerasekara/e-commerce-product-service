@@ -12,7 +12,7 @@ export class ProductVariant {
         nullable: true
     })
     @JoinColumn({name: "product_id"})
-    productId!: Product;
+    product!: Product;
 
     @Column()
     @IsString()
@@ -32,5 +32,5 @@ export class ProductVariant {
 
     @Column()
     @IsNumber()
-    stock_quntity!: number;
+    stock_quantity!: number;
 }

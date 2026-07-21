@@ -40,6 +40,6 @@ export class Product {
     @CreateDateColumn()
     created_on!: Date;
 
-    @OneToMany(() => ProductVariant, (variant) => variant.productId)
+    @OneToMany(() => ProductVariant, (variant) => variant.product)
     variant!: ProductVariant[]
 }
