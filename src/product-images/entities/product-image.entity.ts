@@ -3,12 +3,12 @@ import { Product } from "../../products/entities/product.entity";
 
 @Entity()
 export class ProductImage {
-    @Column()
     @PrimaryGeneratedColumn()
     id!: number;
 
     @ManyToOne(() => Product, (product) => product.images, {
-        nullable: true
+        nullable: true,
+        onDelete: 'CASCADE'
     })
     @JoinColumn({name: "product_id"})
     product!: Product;
@@ -17,5 +17,5 @@ export class ProductImage {
     image_url!: string;
 
     @Column({default: 1})
-    sort_order!: string;
+    sort_order!: number;
 }
