@@ -7,7 +7,7 @@ export class ProductImage {
     @PrimaryGeneratedColumn()
     id!: number;
 
-    @ManyToOne(() => Product, (product) => product.product_image, {
+    @ManyToOne(() => Product, (product) => product.images, {
         nullable: true
     })
     @JoinColumn({name: "product_id"})
@@ -16,6 +16,6 @@ export class ProductImage {
     @Column()
     image_url!: string;
 
-    @Column()
+    @Column({default: 1})
     sort_order!: string;
 }

@@ -40,6 +40,6 @@ export class Product {
     @CreateDateColumn()
     created_on!: Date;
 
-    @OneToMany(() =>ProductImage, (productImage) => productImage.product)
-    product_image!: ProductImage[];
+    @OneToMany(() =>ProductImage, (image) => image.product)
+    images!: ProductImage[];
 }
