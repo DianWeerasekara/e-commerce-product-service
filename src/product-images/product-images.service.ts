@@ -51,12 +51,17 @@ export class ProductImagesService {
   }
 
   async findOne(id: number) {
-    const image = await this.productImageRepository.findOne({
+    const product = await this.productRepository.findOne({
       where: { id },
       relations: {
-        product: true
-      }
-    })
+        images: true,
+      },
+      order: {
+        images: {
+          sort_order: 'ASC',
+        },
+      },
+    });
   }
 
   update(id: number, updateProductImageDto: UpdateProductImageDto) {
