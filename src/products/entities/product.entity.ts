@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Category } from "../../category/entities/category.entity";
+import { ProductVariant } from "../../product-variant/entities/product-variant.entity";
 
 @Entity()
 export class Product {
@@ -38,4 +39,7 @@ export class Product {
 
     @CreateDateColumn()
     created_on!: Date;
+
+    @OneToMany(() => ProductVariant, (variant) => variant.productId)
+    variant!: ProductVariant[]
 }
