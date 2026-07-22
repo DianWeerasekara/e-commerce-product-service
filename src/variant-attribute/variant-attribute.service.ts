@@ -50,19 +50,26 @@ export class VariantAttributeService {
   }
 
   async findOne(id: number) {
-    const result = await this.productVariantRepository.findOne({
-      where: {id},
+    const result = await this.variantAtributeRepository.findOne({
+      where: { id },
       relations: {
-        variantAttributes: true
-      }
-    })
+        productVariant: true,
+      },
+    });
   }
 
   update(id: number, updateVariantAttributeDto: UpdateVariantAttributeDto) {
     return `This action updates a #${id} variantAttribute`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} variantAttribute`;
+  async remove(id: number) {
+    const result = await this.productVariantRepository.delete(id);
+
+    if(!result.affected){
+      throw new NotFoundException('variant id not found')
+    }
+    return {
+      message: 'variant attribute deleted successfully.',
+    };
   }
 }
