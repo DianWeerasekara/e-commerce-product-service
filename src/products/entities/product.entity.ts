@@ -1,6 +1,6 @@
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { Category } from "../../category/entities/category.entity";
-import { ProductVariant } from "../../product-variant/entities/product-variant.entity";
+import { ProductImage } from "../../product-images/entities/product-image.entity";
 
 @Entity()
 export class Product {
@@ -40,6 +40,6 @@ export class Product {
     @CreateDateColumn()
     created_on!: Date;
 
-    @OneToMany(() => ProductVariant, (variant) => variant.product)
-    variant!: ProductVariant[]
+    @OneToMany(() =>ProductImage, (image) => image.product)
+    images!: ProductImage[];
 }

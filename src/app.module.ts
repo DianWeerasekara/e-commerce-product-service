@@ -6,8 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { databaseConfig } from './database/database.config';
 import { CategoryModule } from './category/category.module';
 import { ProductsModule } from './products/products.module';
-import { ProductVariantModule } from './product-variant/product-variant.module';
-import { VariantAttributeModule } from './variant-attribute/variant-attribute.module';
+import { ProductImagesModule } from './product-images/product-images.module';
 
 @Module({
   imports: [
@@ -24,9 +23,7 @@ import { VariantAttributeModule } from './variant-attribute/variant-attribute.mo
 
     ProductsModule,
 
-    ProductVariantModule,
-
-    VariantAttributeModule,
+    ProductImagesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
