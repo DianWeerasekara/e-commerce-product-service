@@ -1,40 +1,49 @@
-import { IsNumber, IsString } from "class-validator";
-import { Column, Entity, JoinColumn, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ManyToOne } from "typeorm/browser";
-import { Product } from "../../products/entities/product.entity";
-import { VariantAttribute } from "../../variant-attribute/entities/variant-attribute.entity";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Product } from '../../products/entities/product.entity';
+import { VariantAttribute } from '../../variant-attribute/entities/variant-attribute.entity';
 
 @Entity()
 export class ProductVariant {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @ManyToOne(() => Product, (products) => products.variant, {
-    nullable: true,
+  @ManyToOne(() => Product, (product) => product.variants, {
+    nullable: false,
+    onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'product_id' })
   product!: Product;
 
-  @Column()
-  @IsString()
+  @Column({ unique: true })
   sku!: string;
 
   @Column()
-  @IsString()
   color!: string;
 
   @Column()
-  @IsString()
   size!: string;
 
-  @Column()
-  @IsNumber()
+  @Column({
+    type: 'decimal',
+    precision: 10,
+    scale: 2,
+  })
   price!: number;
 
-  @Column()
-  @IsNumber()
+  @Column({
+    default: 0,
+  })
   stock_quantity!: number;
 
-  @OneToMany(() => VariantAttribute, (attribute) => attribute.productVariant)
+  @OneToMany(() => VariantAttribute, (attribute) => attribute.productVariant, {
+    cascade: true,
+  })
   variantAttributes!: VariantAttribute[];
 }
