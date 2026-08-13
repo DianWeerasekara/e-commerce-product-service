@@ -11,7 +11,7 @@ export class CreateProductDto {
   @Type(() => Number)
   @IsNumber()
   @IsNotEmpty()
-  category!: number;
+  categoryId!: number;
 
   @IsString()
   @IsNotEmpty()
@@ -24,10 +24,6 @@ export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
   description!: string;
-
-  @IsString()
-  @IsNotEmpty()
-  sku!: string;
 
   @IsString()
   @IsNotEmpty()
